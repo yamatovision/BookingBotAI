@@ -1,0 +1,10 @@
+
+# Environment Variables
+backend/.env
+backend/env.development
+backend/env.production
+**/node_modules
+**/.DS_Store
+**/dist
+**/.vite
+

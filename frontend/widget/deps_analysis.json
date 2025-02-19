@@ -1,0 +1,81 @@
+{
+  "version": "1.0.0",
+  "name": "widget",
+  "dependencies": {
+    "@babel/core": {
+      "version": "7.26.9",
+      "resolved": "https://registry.npmjs.org/@babel/core/-/core-7.26.9.tgz",
+      "overridden": false
+    },
+    "@babel/preset-react": {
+      "version": "7.26.3",
+      "resolved": "https://registry.npmjs.org/@babel/preset-react/-/preset-react-7.26.3.tgz",
+      "overridden": false
+    },
+    "@emotion/react": {
+      "version": "11.14.0",
+      "resolved": "https://registry.npmjs.org/@emotion/react/-/react-11.14.0.tgz",
+      "overridden": false
+    },
+    "@emotion/styled": {
+      "version": "11.14.0",
+      "resolved": "https://registry.npmjs.org/@emotion/styled/-/styled-11.14.0.tgz",
+      "overridden": false
+    },
+    "@mui/icons-material": {
+      "version": "5.16.14",
+      "resolved": "https://registry.npmjs.org/@mui/icons-material/-/icons-material-5.16.14.tgz",
+      "overridden": false
+    },
+    "@mui/material": {
+      "version": "5.16.14",
+      "resolved": "https://registry.npmjs.org/@mui/material/-/material-5.16.14.tgz",
+      "overridden": false
+    },
+    "@rollup/plugin-babel": {
+      "version": "6.0.4",
+      "resolved": "https://registry.npmjs.org/@rollup/plugin-babel/-/plugin-babel-6.0.4.tgz",
+      "overridden": false
+    },
+    "@rollup/plugin-commonjs": {
+      "version": "25.0.8",
+      "resolved": "https://registry.npmjs.org/@rollup/plugin-commonjs/-/plugin-commonjs-25.0.8.tgz",
+      "overridden": false
+    },
+    "@rollup/plugin-node-resolve": {
+      "version": "15.3.1",
+      "resolved": "https://registry.npmjs.org/@rollup/plugin-node-resolve/-/plugin-node-resolve-15.3.1.tgz",
+      "overridden": false
+    },
+    "@rollup/plugin-replace": {
+      "version": "5.0.7",
+      "resolved": "https://registry.npmjs.org/@rollup/plugin-replace/-/plugin-replace-5.0.7.tgz",
+      "overridden": false
+    },
+    "@rollup/plugin-terser": {
+      "version": "0.4.4",
+      "resolved": "https://registry.npmjs.org/@rollup/plugin-terser/-/plugin-terser-0.4.4.tgz",
+      "overridden": false
+    },
+    "axios": {
+      "version": "1.7.9",
+      "resolved": "https://registry.npmjs.org/axios/-/axios-1.7.9.tgz",
+      "overridden": false
+    },
+    "react-dom": {
+      "version": "18.3.1",
+      "resolved": "https://registry.npmjs.org/react-dom/-/react-dom-18.3.1.tgz",
+      "overridden": false
+    },
+    "react": {
+      "version": "18.3.1",
+      "resolved": "https://registry.npmjs.org/react/-/react-18.3.1.tgz",
+      "overridden": false
+    },
+    "rollup": {
+      "version": "4.34.7",
+      "resolved": "https://registry.npmjs.org/rollup/-/rollup-4.34.7.tgz",
+      "overridden": false
+    }
+  }
+}

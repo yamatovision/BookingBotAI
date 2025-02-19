@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chat Widget Preview</title>
+    <!-- 依存関係を読み込む -->
+    <script src="https://cdn.jsdelivr.net/npm/react@18/umd/react.production.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mui/material@5.15.14/umd/material-ui.production.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emotion/react@11.11.3/dist/emotion-react.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emotion/styled@11.11.0/dist/emotion-styled.umd.min.js"></script>
+    <style>
+        #debug-output {
+            display: none; /* デフォルトで非表示 */
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            background: rgba(0,0,0,0.8);
+            color: #fff;
+            padding: 10px;
+            border-radius: 4px;
+            font-family: monospace;
+            z-index: 9999;
+            max-width: 80%;
+            max-height: 200px;
+            overflow: auto;
+        }
+        .debug-item {
+            margin: 5px 0;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div id="debug-output">
+        <pre id="debug-log"></pre>
+    </div>
+    <div id="root"></div>
+
+    <script>
+        const isProduction = window.location.hostname !== 'localhost';
+        
+        // デバッグ関連の機能を開発環境でのみ有効化
+        if (!isProduction) {
+            document.getElementById('debug-output').style.display = 'block';
+            
+            // デバッグログ関数
+            window.debugLog = function(message, type = 'info') {
+                const debugLog = document.getElementById('debug-log');
+                const timestamp = new Date().toISOString().split('T')[1].split('.')[0];
+                const logMessage = `[${timestamp}] [${type}] ${JSON.stringify(message, null, 2)}`;
+                debugLog.textContent += logMessage + '\n';
+                console.log(logMessage);
+            }
+        } else {
+            window.debugLog = function() {}; // 本番環境では空の関数
+        }
+
+        // 環境チェック
+        debugLog('Checking environment...');
+        debugLog({
+            'Window Objects': Object.keys(window).filter(key => 
+                ['React', 'ReactDOM', 'MaterialUI', 'emotionReact', 'emotionStyled'].includes(key)
+            )
+        });
+
+        // スクリプトの読み込みを待つ
+        document.addEventListener('DOMContentLoaded', function() {
+            debugLog('DOM Content Loaded');
+            
+            // ウィジェットスクリプトの読み込み
+            const script = document.createElement('script');
+            script.src = './index.umd.js'; // 相対パスに修正
+            script.onload = function() {
+                debugLog('Widget script loaded');
+                initializeWidget();
+            };
+            script.onerror = function(error) {
+                debugLog('Widget script failed to load: ' + error, 'error');
+            };
+            document.body.appendChild(script);
+        });
+
+        function initializeWidget() {
+            try {
+                debugLog('Initializing widget...');
+                debugLog({
+                    'AIChatWidget exists': !!window.AIChatWidget,
+                    'init function exists': !!(window.AIChatWidget && window.AIChatWidget.init)
+                });
+
+                const urlParams = new URLSearchParams(window.location.search);
+                const isModal = urlParams.get('modal') === 'true';
+
+                if (window.AIChatWidget && window.AIChatWidget.init) {
+                    window.AIChatWidget.init({
+                        clientId: 'preview',
+                        theme: {
+                            primary: '#ff502b'
+                        },
+                        displayMode: isModal ? 'modal' : 'chat'
+                    });
+                    debugLog('Widget initialized successfully');
+                } else {
+                    throw new Error('AIChatWidget.init is not available');
+                }
+            } catch (error) {
+                debugLog('Initialization error: ' + error.message, 'error');
+            }
+        }
+    </script>
+</body>
+</html>

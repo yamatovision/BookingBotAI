@@ -1,0 +1,42 @@
+{
+  "hosting": [{
+    "target": "admin",
+    "public": "admin/dist",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [{
+      "source": "**",
+      "destination": "/index.html"
+    }]
+  }, {
+    "target": "widget",
+    "public": "widget/dist",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [{      
+      "source": "**",
+      "destination": "/index.html"
+    }],
+    "headers": [
+      {
+        "source": "**/*.{js,css,html}",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "max-age=3600"
+          },
+          {
+            "key": "Access-Control-Allow-Origin",
+            "value": "*"
+          }
+        ]
+      }
+    ]
+  }]
+}
