@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chat Widget Demo</title>
+    <!-- 依存関係を先に読み込む -->
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/@mui/material@5.15.14/umd/material-ui.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/@emotion/react@11.11.3/dist/emotion-react.umd.min.js" crossorigin></script>
+    <script src="https://unpkg.com/@emotion/styled@11.11.0/dist/emotion-styled.umd.min.js" crossorigin></script>
+    <style>
+        .ai-chat-button {
+            background-color: #2bffba;
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 24px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+        .ai-chat-button:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <h1>Widget Demo</h1>
+
+    <button class="ai-chat-button" id="ai-chat-trigger">
+        無料相談を予約する
+    </button>
+
+    <script src="http://localhost:5174/dist/index.umd.cjs"></script>
+    <script>
+        // DOMContentLoaded を使用して確実にスクリプトが読み込まれた後に実行
+        document.addEventListener('DOMContentLoaded', function() {
+            if (!document.getElementById('ai-chat-widget-container')) {
+                const container = document.createElement('div');
+                container.id = 'ai-chat-widget-container';
+                document.body.appendChild(container);
+            }
+
+            // デバッグ用のログ
+            console.log('AIChatWidget status:', window.AIChatWidget);
+
+            document.getElementById('ai-chat-trigger').addEventListener('click', function() {
+                if (window.AIChatWidget) {
+                    window.AIChatWidget.init({
+                        clientId: 'YOUR_CLIENT_ID',
+                        theme: {
+                            primary: '#2bffba'
+                        },
+                        displayMode: 'modal',
+                        container: 'ai-chat-widget-container'
+                    });
+                } else {
+                    console.error('AIChatWidget not initialized');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

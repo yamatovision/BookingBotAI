@@ -1,0 +1,18 @@
+{
+  "projects": {
+    "default": "yamatovision-blue-lamp"
+  },
+  "targets": {
+    "yamatovision-blue-lamp": {
+      "hosting": {
+        "admin": [
+          "aibookingbot-admin"
+        ],
+        "widget": [
+          "aibookingbot-widget"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}
